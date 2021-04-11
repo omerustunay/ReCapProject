@@ -1,0 +1,22 @@
+
+<div class="card">
+  <div class="card-header">
+    <input
+      type="text"
+      [(ngModel)]="filterText"
+      class="form-control"
+      id="filterTextBrand"
+      placeholder="Marka giriniz"
+    />
+</div>
+</div>
+<div class="card-body">
+  <ul class="list group">
+    <li [class]="getAllBrandClass()" routerLink="/cars">Tüm Markalar</li>
+    <li (click)="setCurrentBrand(brand)"
+     *ngFor="let brand of brands | filterPipeBrand:filterText "
+     routerLink="/cars/brand/{{brand.id}}"
+     class="list-group-item"
+     style="font-size: 16px;"><span><b>{{ brand.brandName }}</b></span></li>
+  </ul>
+</div>

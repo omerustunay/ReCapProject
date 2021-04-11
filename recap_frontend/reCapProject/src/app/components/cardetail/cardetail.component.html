@@ -1,0 +1,24 @@
+<div class="row">
+  <table class="table table-bordered table-responsive table-hover table-dark" style="margin-top: 2%;">
+    <thead>
+      <tr>
+        <th>şirket</th>
+        <th>müşteri</th>
+        <th>araç</th>
+        <th>kiralama başlangıc</th>
+        <th>kiralama bitiş</th>
+        <th *ngIf="isRentable"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rental of rents">
+        <td>{{rental.companyName}}</td>
+        <td>{{rental.customerName}}</td>
+        <td>{{rental.carName}}</td>
+        <td>{{rental.rentDate | date:"dd/MMM/yy" }}</td>
+        <td >{{rental.returnDate | date:"dd/MMM/yy"}}</td>
+        <td *ngIf="isRentable"><button  (click)="addToCart(rental)" type="button" class="btn btn-success" >Araç Kirala</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
